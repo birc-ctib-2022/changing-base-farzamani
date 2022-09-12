@@ -29,4 +29,22 @@ def change_to_base(n: int, b: int) -> str:
     '1F'
     """
     assert 2 <= b <= 16
-    return ''  # FIXME: return n in the right base
+    
+    lst = ''
+
+    if n == 0:
+        return '0'
+    elif n > 0:
+        while n > 0:
+            lsd = digits[n % b]
+            lst += lsd
+            n = n // b
+        return lst[::-1]
+    else:
+        n = n * -1
+        while n > 0:
+            lsd = digits[n % b]
+            lst += lsd
+            n = n // b
+        lst += '-'
+        return lst[::-1]  # FIXME: return n in the right base
